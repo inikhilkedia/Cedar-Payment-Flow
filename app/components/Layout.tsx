@@ -19,7 +19,7 @@ const Layout = ({ children }: LayoutProps) => {
       <header className="flex min-h-20 items-center bg-white p-4 shadow-md">
         <div className="flex items-center">
           <Image
-            src="/ABC-Logo.svg"
+            src="/abclogo.svg"
             alt="ABC Health System"
             width={100}
             height={100}
