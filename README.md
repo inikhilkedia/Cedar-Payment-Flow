@@ -115,7 +115,7 @@ The PaymentForm.tsx file is a component responsible for handling the input and v
 
 - validateCardNumber: Validates the card number using the Luhn algorithm.
 - validateExpiry: Validates the expiry date.
-    •	validateCvv: Validates the CVV.
+- validateCvv: Validates the CVV.
 - validateName: Validates the name on the card.
 - validateZip: Validates the ZIP code.
 
