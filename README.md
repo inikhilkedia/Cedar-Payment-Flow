@@ -14,12 +14,12 @@ The Layout.tsx file defines a common layout component that can be used across va
 
 The Page file is a client-side component responsible for displaying a welcome message and payment summary to the user. It uses the context provided by AppContext to manage state and actions within the application.
 
-#### Functionality
+### Functionality
 
 - The Welcome component displays a welcome message, a summary of medical bills, and a “Pay total” button.
 - It utilizes the context from AppContext to access the amount, setEditing, and setStage functions.
 
-#### Context
+### Context
 
 - useContext(AppContext): Accesses the context provided by AppContext.
 - amount: The total amount due, displayed to the user.
@@ -30,7 +30,7 @@ The Page file is a client-side component responsible for displaying a welcome me
 
 The Page file is a client-side component responsible for handling the payment and review process. This component utilizes context to manage state and actions, provides a payment form, and allows users to review their payment information.
 
-#### Context
+### Context
 
 - useContext(AppContext): Accesses the context provided by AppContext.
 - amount: The total amount to be paid.
@@ -39,12 +39,12 @@ The Page file is a client-side component responsible for handling the payment an
 - setEditing: Function to set the editing state.
 - setStage: Function to set the current stage of the process.
 
-#### State
+### State
 
 - paymentFormClass: CSS class for the payment form based on the editing state.
 - reviewFragmentClass: CSS class for the review fragment based on the editing state.
 
-#### Event Handlers
+### Event Handlers
 
 - useEffect: Updates the CSS classes for the payment form and review fragment based on the editing state.
 - handleContinue: This function is not used directly in this component but is included for completeness.
@@ -53,7 +53,7 @@ The Page file is a client-side component responsible for handling the payment an
 
 The page file is a client-side component responsible for handling the payment and review process. This component utilizes context to manage state and actions, provides a payment form, and allows users to review their payment information.
 
-#### Context
+### Context
 
 - useContext(AppContext): Accesses the context provided by AppContext.
 - amount: The total amount to be paid.
@@ -62,12 +62,12 @@ The page file is a client-side component responsible for handling the payment an
 - setEditing: Function to set the editing state.
 - setStage: Function to set the current stage of the process.
 
-#### State
+### State
 
 - paymentFormClass: CSS class for the payment form based on the editing state.
 - reviewFragmentClass: CSS class for the review fragment based on the editing state.
 
-#### Event Handlers
+### Event Handlers
 
 - useEffect: Updates the CSS classes for the payment form and review fragment based on the editing state.
 
