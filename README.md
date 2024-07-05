@@ -16,15 +16,15 @@ The Page file is a client-side component responsible for displaying a welcome me
 
 ### Functionality
 
-	•	The Welcome component displays a welcome message, a summary of medical bills, and a “Pay total” button.
-	•	It utilizes the context from AppContext to access the amount, setEditing, and setStage functions.
+- The Welcome component displays a welcome message, a summary of medical bills, and a “Pay total” button.
+- It utilizes the context from AppContext to access the amount, setEditing, and setStage functions.
 
 ### Context
 
-	•	useContext(AppContext): Accesses the context provided by AppContext.
-	•	amount: The total amount due, displayed to the user.
-	•	setEditing: Function to set the editing state.
-	•	setStage: Function to set the current stage of the process.
+- useContext(AppContext): Accesses the context provided by AppContext.
+- amount: The total amount due, displayed to the user.
+- setEditing: Function to set the editing state.
+- setStage: Function to set the current stage of the process.
 
 ## PayAndReview Page (/app/PayAndReview/page.tsx)
 
@@ -32,22 +32,22 @@ The Page file is a client-side component responsible for handling the payment an
 
 ### Context
 
-	•	useContext(AppContext): Accesses the context provided by AppContext.
-	•	amount: The total amount to be paid.
-	•	cardNumber: The card number used for payment.
-	•	editing: Boolean value indicating whether the payment information is being edited.
-	•	setEditing: Function to set the editing state.
-	•	setStage: Function to set the current stage of the process.
+- useContext(AppContext): Accesses the context provided by AppContext.
+- amount: The total amount to be paid.
+- cardNumber: The card number used for payment.
+- editing: Boolean value indicating whether the payment information is being edited.
+- setEditing: Function to set the editing state.
+- setStage: Function to set the current stage of the process.
 
 ### State
 
-	•	paymentFormClass: CSS class for the payment form based on the editing state.
-	•	reviewFragmentClass: CSS class for the review fragment based on the editing state.
+- paymentFormClass: CSS class for the payment form based on the editing state.
+- reviewFragmentClass: CSS class for the review fragment based on the editing state.
 
 ### Event Handlers
 
-	•	useEffect: Updates the CSS classes for the payment form and review fragment based on the editing state.
-	•	handleContinue: This function is not used directly in this component but is included for completeness.
+- useEffect: Updates the CSS classes for the payment form and review fragment based on the editing state.
+- handleContinue: This function is not used directly in this component but is included for completeness.
 
 ## PayAndReview Page (/app/PayAndReview/page.tsx)
 
@@ -55,21 +55,21 @@ The page file is a client-side component responsible for handling the payment an
 
 ### Context
 
-	•	useContext(AppContext): Accesses the context provided by AppContext.
-	•	amount: The total amount to be paid.
-	•	cardNumber: The card number used for payment.
-	•	editing: Boolean value indicating whether the payment information is being edited.
-	•	setEditing: Function to set the editing state.
-	•	setStage: Function to set the current stage of the process.
+- useContext(AppContext): Accesses the context provided by AppContext.
+- amount: The total amount to be paid.
+- cardNumber: The card number used for payment.
+- editing: Boolean value indicating whether the payment information is being edited.
+- setEditing: Function to set the editing state.
+- setStage: Function to set the current stage of the process.
 
 ### State
 
-	•	paymentFormClass: CSS class for the payment form based on the editing state.
-	•	reviewFragmentClass: CSS class for the review fragment based on the editing state.
+- paymentFormClass: CSS class for the payment form based on the editing state.
+- reviewFragmentClass: CSS class for the review fragment based on the editing state.
 
 ### Event Handlers
 
-	•	useEffect: Updates the CSS classes for the payment form and review fragment based on the editing state.
+- useEffect: Updates the CSS classes for the payment form and review fragment based on the editing state.
 
 ## Components (/app/components)
 
@@ -91,21 +91,21 @@ The InputField.tsx file is a versatile input field component that can display er
 
 #### Properties
 
-	•	id: A unique identifier for the input field.
-	•	classes: Optional additional CSS classes for the input field.
-	•	label: The label text for the input field.
-	•	value: The current value of the input field.
-	•	onChange: A function to handle changes to the input field.
-	•	onKeyDown: Optional function to handle key down events in the input field.
-	•	error: Boolean indicating whether there is an error with the input field.
-	•	ariaLabel: The ARIA label for accessibility.
-	•	validationFunc: A function to validate the input value.
+- id: A unique identifier for the input field.
+- classes: Optional additional CSS classes for the input field.
+- label: The label text for the input field.
+- value: The current value of the input field.
+- onChange: A function to handle changes to the input field.
+- onKeyDown: Optional function to handle key down events in the input field.
+- error: Boolean indicating whether there is an error with the input field.
+- ariaLabel: The ARIA label for accessibility.
+- validationFunc: A function to validate the input value.
 
 #### Structure
 
-	•	handleInvalidErrorText: A helper function to return appropriate error messages based on the input field ID.
-	•	ErrorText: A component that displays error messages.
-	•	InputField: The main input field component.
+- handleInvalidErrorText: A helper function to return appropriate error messages based on the input field ID.
+- ErrorText: A component that displays error messages.
+- InputField: The main input field component.
 
 ### PaymentForm Component (/app/components/PaymentForm.tsx)
 
@@ -113,17 +113,17 @@ The PaymentForm.tsx file is a component responsible for handling the input and v
 
 #### Validation Functions
 
-	•	validateCardNumber: Validates the card number using the Luhn algorithm.
-	•	validateExpiry: Validates the expiry date.
+- validateCardNumber: Validates the card number using the Luhn algorithm.
+- validateExpiry: Validates the expiry date.
     •	validateCvv: Validates the CVV.
-	•	validateName: Validates the name on the card.
-	•	validateZip: Validates the ZIP code.
+- validateName: Validates the name on the card.
+- validateZip: Validates the ZIP code.
 
 #### Event Handlers
 
-	•	handleFieldChange: Handles changes to the input fields and performs validation.
-	•	handleExpiryKeyDown: Handles key down events for the expiry date field to manage deletion.
-	•	handleSubmit: Handles form submission and performs final validation.
+- handleFieldChange: Handles changes to the input fields and performs validation.
+- handleExpiryKeyDown: Handles key down events for the expiry date field to manage deletion.
+- handleSubmit: Handles form submission and performs final validation.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
