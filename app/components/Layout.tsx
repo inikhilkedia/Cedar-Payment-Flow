@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import Image from "next/image";
+import abclogo from "../public/abclogo.svg";
 
 interface LayoutProps {
   children: ReactNode;
@@ -19,7 +20,7 @@ const Layout = ({ children }: LayoutProps) => {
       <header className="flex min-h-20 items-center bg-white p-4 shadow-md">
         <div className="flex items-center">
           <Image
-            src="/abclogo.svg"
+            src={abclogo}
             alt="ABC Health System"
             width={100}
             height={100}
