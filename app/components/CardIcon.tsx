@@ -17,10 +17,10 @@ type CardIconProps = {
  */
 const CardIcon: React.FC<CardIconProps> = ({ cardType }) => {
   const cardIcons: { [key: string]: string } = {
-    visa: "/visa.svg", // replace with your Visa icon path
-    mastercard: "/mastercard.svg", // replace with your MasterCard icon path
-    amex: "/amex.svg", // replace with your Amex icon path
-    discover: "/discover.svg", // replace with your Discover icon path
+    visa: "/cedar-payment-flow/visa.svg", // replace with your Visa icon path
+    mastercard: "/cedar-payment-flow/mastercard.svg", // replace with your MasterCard icon path
+    amex: "/cedar-payment-flow/amex.svg", // replace with your Amex icon path
+    discover: "/cedar-payment-flow/discover.svg", // replace with your Discover icon path
   };
 
   return (
