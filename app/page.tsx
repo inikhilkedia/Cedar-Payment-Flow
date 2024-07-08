@@ -1,12 +1,19 @@
 "use client";
 
-import Layout from "./components/Layout";
 import { useContext } from "react";
+import Layout from "./components/Layout";
 import AppContext from "./AppContext";
 import Welcome from "./Welcome/page";
 import PayAndReview from "./PayAndReview/page";
 
-export default function Home() {
+/**
+ * Home component
+ *
+ * Renders different stages of the payment process based on the current stage.
+ *
+ * @returns {JSX.Element} The home component
+ */
+export default function Home(): JSX.Element {
   const context = useContext(AppContext);
   const { stage } = context;
 

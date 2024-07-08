@@ -1,17 +1,30 @@
 "use client";
 
+import React, { useState } from "react";
 import AppContext from "./AppContext";
-import { useState } from "react";
 
-const AppProvider = ({ children }: { children: React.ReactNode }) => {
+interface AppProviderProps {
+  children: React.ReactNode;
+}
+
+interface PaymentError {
+  cardNumber?: boolean;
+  expiry?: boolean;
+  cvv?: boolean;
+  name?: boolean;
+  zip?: boolean;
+}
+
+const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [stage, setStage] = useState<string>("welcome");
   const [amount, setAmount] = useState<number>(600.0);
-  const [cardNumber, setCardNumber] = useState<string>("");
-  const [expiry, setExpiry] = useState<string>("");
-  const [cvv, setCvv] = useState<string>("");
-  const [name, setName] = useState<string>("");
-  const [zip, setZip] = useState<string>("");
-  const [editing, setEditing] = useState(false);
+  const [cardNumber, setCardNumber] = useState<string | undefined>("");
+  const [expiry, setExpiry] = useState<string | undefined>("");
+  const [cvv, setCvv] = useState<string | undefined>("");
+  const [name, setName] = useState<string | undefined>("");
+  const [zip, setZip] = useState<string | undefined>("");
+  const [editing, setEditing] = useState<boolean>(false);
+  const [error, setError] = useState<PaymentError>({});
 
   return (
     <AppContext.Provider
@@ -32,6 +45,8 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
         setZip,
         editing,
         setEditing,
+        error,
+        setError,
       }}
     >
       {children}

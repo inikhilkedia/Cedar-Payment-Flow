@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import PaymentForm from "../components/PaymentForm";
 import AppContext from "../AppContext";
 import { getCardType } from "../utils/cardType";
-import CardIcon from "../components/CardIcon";
+import Icons from "../components/Icons";
 import styles from "./PayAndReview.module.css";
 
 /**
@@ -14,9 +14,9 @@ import styles from "./PayAndReview.module.css";
  *
  * @returns {JSX.Element} The PayAndReview component
  */
-export default function PayAndReview() {
+export default function PayAndReview(): JSX.Element {
   const context = useContext(AppContext);
-  const { amount, cardNumber, editing, setEditing, setStage } = context;
+  const { amount, cardNumber, editing, setEditing, setStage } = context || {};
   const [paymentFormClass, setPaymentFormClass] = useState(
     editing ? styles.expand : styles.collapse
   );
@@ -43,7 +43,7 @@ export default function PayAndReview() {
               editing
                 ? "bg-blue-600 text-white"
                 : "bg-custom-light-gray text-gray-500"
-            } `}
+            }`}
           >
             1
           </p>
@@ -52,8 +52,8 @@ export default function PayAndReview() {
           </p>
           {!editing && (
             <p
-              className="ml-4 text-lg font-bold text-blue-600"
-              onClick={() => setEditing(true)}
+              className="ml-4 text-lg font-bold text-blue-600 cursor-pointer"
+              onClick={() => setEditing?.(true)}
             >
               Edit
             </p>
@@ -90,7 +90,7 @@ export default function PayAndReview() {
               Payment method
             </h3>
             <div className="my-4 flex items-center justify-start gap-2">
-              <CardIcon cardType={getCardType?.(cardNumber!)} />
+              <Icons type="card" cardType={getCardType?.(cardNumber ?? "")} />
               <span className="card-details text-custom-dark">
                 Card ending in ••••{cardNumber?.slice(-4)}
               </span>
@@ -99,7 +99,7 @@ export default function PayAndReview() {
               className="m-auto mt-6 w-full rounded-lg bg-blue-600 px-4 py-2 text-white"
               onClick={() => setStage?.("thankyou")}
             >
-              Pay $600.00
+              Pay ${amount}
             </button>
           </div>
         )}

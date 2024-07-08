@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FC } from "react";
-import ErrorIcon from "./ErrorIcon";
-import SuccessIcon from "./SuccessIcon";
+import ErrorText from "./ErrorText";
+import Icons from "./Icons";
+import { getCardType } from "../utils/cardType";
 
 interface InputFieldProps {
   id: string;
@@ -14,36 +15,9 @@ interface InputFieldProps {
   validationFunc: (value: string) => boolean;
 }
 
-const handleInvalidErrorText = (id: string) => {
-  switch (id) {
-    case "cardNumber":
-      return "Invalid card number.";
-    case "expiry":
-      return "Invalid expiry date.";
-    case "cvv":
-      return "Invalid CVV.";
-    case "zip":
-      return "Invalid ZIP code.";
-  }
-};
-
-interface ErrorTextProps {
-  type: string;
-  id?: string;
-}
-
-const ErrorText: FC<ErrorTextProps> = ({ type, id }) => {
-  return (
-    <span className="error-text text-custom-error-red">
-      {type === "invalid" && handleInvalidErrorText(id!)}
-      {type === "empty" && "This field is required."}
-    </span>
-  );
-};
-
 const InputField: FC<InputFieldProps> = ({
   id,
-  classes,
+  classes = "",
   label,
   value,
   onChange,
@@ -60,7 +34,12 @@ const InputField: FC<InputFieldProps> = ({
       >
         {label}
       </label>
-      <div className="input-wrapper">
+      <div className="relative flex items-center">
+        {id === "cardNumber" && (
+          <span className="absolute left-3 flex items-center">
+            <Icons type="card" cardType={getCardType?.(value ?? "")} />
+          </span>
+        )}
         <input
           type="text"
           id={id}
@@ -69,12 +48,18 @@ const InputField: FC<InputFieldProps> = ({
           onKeyDown={onKeyDown}
           className={`w-full rounded border px-3 py-2 text-custom-dark ${
             error ? "border-custom-error-red" : "border-custom-medium-gray"
-          }`}
+          } ${id === "cardNumber" ? "pl-12" : ""} pr-10`}
           aria-label={ariaLabel}
         />
-        {error ? <ErrorIcon /> : validationFunc(value) ? <SuccessIcon /> : null}
+        <span className="absolute right-3 flex items-center">
+          {error ? (
+            <Icons type="error" />
+          ) : validationFunc(value) ? (
+            <Icons type="success" />
+          ) : null}
+        </span>
       </div>
-      {value.length && error ? (
+      {value.length > 0 && error ? (
         <ErrorText type="invalid" id={id} />
       ) : value.length === 0 && error ? (
         <ErrorText type="empty" id={id} />

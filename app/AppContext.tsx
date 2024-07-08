@@ -1,41 +1,45 @@
 import { createContext } from "react";
 
-interface AppContextType {
-  stage: string | null;
-  setStage: React.Dispatch<React.SetStateAction<string>> | null;
+export interface AppContextType {
+  stage: string;
+  setStage: React.Dispatch<React.SetStateAction<string>>;
   amount: number;
-  setAmount: React.Dispatch<React.SetStateAction<number>> | null;
-  cardNumber: string | null;
-  setCardNumber: React.Dispatch<React.SetStateAction<string>> | null;
-  expiry: string | null;
-  setExpiry: React.Dispatch<React.SetStateAction<string>>;
-  cvv: string | null;
-  setCvv: React.Dispatch<React.SetStateAction<string>> | null;
-  name: string | null;
-  setName: React.Dispatch<React.SetStateAction<string>> | null;
-  zip: string | null;
-  setZip: React.Dispatch<React.SetStateAction<string>> | null;
-  editing: boolean | null;
+  setAmount: React.Dispatch<React.SetStateAction<number>>;
+  cardNumber?: string;
+  setCardNumber: React.Dispatch<React.SetStateAction<string | undefined>>;
+  expiry?: string;
+  setExpiry: React.Dispatch<React.SetStateAction<string | undefined>>;
+  cvv?: string;
+  setCvv: React.Dispatch<React.SetStateAction<string | undefined>>;
+  name?: string;
+  setName: React.Dispatch<React.SetStateAction<string | undefined>>;
+  zip?: string;
+  setZip: React.Dispatch<React.SetStateAction<string | undefined>>;
+  editing: boolean;
   setEditing: React.Dispatch<React.SetStateAction<boolean>>;
+  error: {};
+  setError: React.Dispatch<React.SetStateAction<{}>>;
 }
 
 const defaultContextValue: AppContextType = {
-  stage: "welcome", //  "payinfo" | "reviewpay" | "thankyou"
-  setStage: null,
+  stage: "welcome",
+  setStage: () => {},
   amount: 600.0,
-  setAmount: null,
-  cardNumber: null,
-  setCardNumber: null,
-  expiry: null,
+  setAmount: () => {},
+  cardNumber: undefined,
+  setCardNumber: () => {},
+  expiry: undefined,
   setExpiry: () => {},
-  cvv: null,
-  setCvv: null,
-  name: null,
-  setName: null,
-  zip: null,
-  setZip: null,
+  cvv: undefined,
+  setCvv: () => {},
+  name: undefined,
+  setName: () => {},
+  zip: undefined,
+  setZip: () => {},
   editing: false,
   setEditing: () => {},
+  error: {},
+  setError: () => {},
 };
 
 const AppContext = createContext<AppContextType>(defaultContextValue);

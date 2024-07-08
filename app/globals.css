@@ -31,26 +31,3 @@ body {
     text-wrap: balance;
   }
 }
-
-.input-wrapper {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.input-wrapper input {
-  flex-grow: 1;
-  padding-right: 2rem; /* Adjust based on icon size */
-}
-
-.icon-wrapper {
-  position: absolute;
-  right: 0.5rem;
-  display: flex;
-  align-items: center;
-}
-
-.error-text {
-  margin-top: 0.5rem;
-  display: block;
-}
