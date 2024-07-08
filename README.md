@@ -1,10 +1,15 @@
 
 # Cedar Payment Flow Take Home Assignment
 
-  
 
 Made with Next.js, Typescript, TailWind CSS & Validator API
 
+
+Screenshot Legent:
+
+- lg: 1024px
+- md: 768px
+- xs: 375px
   
 
 ## layout(/app/layout.tsx)
