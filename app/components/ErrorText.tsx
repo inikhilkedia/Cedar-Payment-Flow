@@ -5,19 +5,15 @@ interface ErrorTextProps {
   id?: string;
 }
 
+const invalidErrorTexts: Record<string, string> = {
+  cardNumber: "Invalid card number.",
+  expiry: "Invalid expiry date.",
+  cvv: "Invalid CVV.",
+  zip: "Invalid ZIP code.",
+};
+
 const handleInvalidErrorText = (id: string): string => {
-  switch (id) {
-    case "cardNumber":
-      return "Invalid card number.";
-    case "expiry":
-      return "Invalid expiry date.";
-    case "cvv":
-      return "Invalid CVV.";
-    case "zip":
-      return "Invalid ZIP code.";
-    default:
-      return "Invalid input.";
-  }
+  return invalidErrorTexts[id] || "Invalid input.";
 };
 
 const ErrorText: FC<ErrorTextProps> = ({ type, id }) => {
