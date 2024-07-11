@@ -6,6 +6,7 @@ Made with Next.js, Typescript, TailWind CSS & Validator API
 
 Test the app with these. [Test Credit Card Numbers](https://www.paypalobjects.com/en_GB/vhelp/paypalmanager_help/credit_card_numbers.htm)
 
+
 Screenshot Legend:
 
 - lg: 1024px
@@ -33,7 +34,7 @@ The Layout.tsx file defines a common layout component that can be used across va
 
   
 
-The Page file is a client-side component responsible for displaying a welcome message and payment summary to the user. It uses the context provided by AppContext to manage state and actions within the application.
+The Page file is a client-side component that displays the user's welcome message and payment summary. It uses the context provided by AppContext to manage the state and actions within the application.
 
   
 
@@ -51,13 +52,13 @@ The Page file is a client-side component responsible for displaying a welcome me
 
   
 
-- useContext(AppContext): Accesses the context provided by AppContext.
+- `useContext(AppContext)`: Accesses the context provided by AppContext.
 
-- amount: The total amount due, displayed to the user.
+- `amount`: The total amount due is displayed to the user.
 
-- setEditing: Function to set the editing state.
+- `setEditing`: Function to set the editing state.
 
-- setStage: Function to set the current stage of the process.
+- `setStage`: Function to set the current stage of the process.
 
   
 
@@ -73,17 +74,17 @@ The Page file is a client-side component responsible for handling the payment an
 
   
 
-- useContext(AppContext): Accesses the context provided by AppContext.
+- `useContext(AppContext)`: Accesses the context provided by AppContext.
 
-- amount: The total amount to be paid.
+- `amount`: The total amount to be paid.
 
-- cardNumber: The card number used for payment.
+- `cardNumber`: The card number used for payment.
 
-- editing: Boolean value indicating whether the payment information is being edited.
+- `editing`: Boolean value indicates whether the payment information is being edited.
 
-- setEditing: Function to set the editing state.
+- `setEditing`: Function to set the editing state.
 
-- setStage: Function to set the current stage of the process.
+- `setStage`: Function to set the current stage of the process.
 
   
 
@@ -91,9 +92,9 @@ The Page file is a client-side component responsible for handling the payment an
 
   
 
-- paymentFormClass: CSS class for the payment form based on the editing state.
+- `paymentFormClass`: CSS class for the payment form based on the editing state.
 
-- reviewFragmentClass: CSS class for the review fragment based on the editing state.
+- `reviewFragmentClass`: CSS class for the review fragment based on the editing state.
 
   
 
@@ -101,9 +102,9 @@ The Page file is a client-side component responsible for handling the payment an
 
   
 
-- useEffect: Updates the CSS classes for the payment form and review fragment based on the editing state.
+- `useEffect`: Updates the CSS classes for the payment form and reviews fragments based on the editing state.
 
-- handleContinue: This function is not used directly in this component but is included for completeness.
+- `handleContinue`: This function is not used directly in this component but is included for completeness.
 
   
 
@@ -119,17 +120,17 @@ The page file is a client-side component responsible for handling the payment an
 
   
 
-- useContext(AppContext): Accesses the context provided by AppContext.
+- `useContext(AppContext)`: Accesses the context provided by AppContext.
 
-- amount: The total amount to be paid.
+- `amount`: The total amount to be paid.
 
-- cardNumber: The card number used for payment.
+- `cardNumber`: The card number used for payment.
 
-- editing: Boolean value indicating whether the payment information is being edited.
+- `editing`: Boolean value indicates whether the payment information is being edited.
 
-- setEditing: Function to set the editing state.
+- `setEditing`: Function to set the editing state.
 
-- setStage: Function to set the current stage of the process.
+- `setStage`: Function to set the current stage of the process.
 
   
 
@@ -137,9 +138,9 @@ The page file is a client-side component responsible for handling the payment an
 
   
 
-- paymentFormClass: CSS class for the payment form based on the editing state.
+- `paymentFormClass`: CSS class for the payment form based on the editing state.
 
-- reviewFragmentClass: CSS class for the review fragment based on the editing state.
+- `reviewFragmentClass`: CSS class for the review fragment based on the editing state.
 
   
 
@@ -147,7 +148,7 @@ The page file is a client-side component responsible for handling the payment an
 
   
 
-- useEffect: Updates the CSS classes for the payment form and review fragment based on the editing state.
+- `useEffect`: Updates the CSS classes for the payment form and reviews fragments based on the editing state.
 
   
 
@@ -179,23 +180,23 @@ The InputField.tsx file is a versatile input field component that can display er
 
   
 
-- id: A unique identifier for the input field.
+- `id`: A unique identifier for the input field.
 
-- classes: Optional additional CSS classes for the input field.
+- `classes`: Optional additional CSS classes are available for the input field.
 
-- label: The label text for the input field.
+- `label`: The label text for the input field.
 
-- value: The current value of the input field.
+- `value`: The current value of the input field.
 
-- onChange: A function to handle changes to the input field.
+- `onChange`: A function to handle changes to the input field.
 
-- onKeyDown: Optional function to handle key down events in the input field.
+- `onKeyDown`: Optional function handles key-down events in the input field.
 
-- error: Boolean indicating whether there is an error with the input field.
+- `error`: Boolean indicating whether there is an error with the input field.
 
-- ariaLabel: The ARIA label for accessibility.
+- `ariaLabel`: The ARIA label for accessibility.
 
-- validationFunc: A function to validate the input value.
+- `validationFunc`: A function to validate the input value.
 
   
 
@@ -203,9 +204,9 @@ The InputField.tsx file is a versatile input field component that can display er
 
   
 
-- handleInvalidErrorText: A helper function to return appropriate error messages based on the input field ID.
+- `handleInvalidErrorText`: A helper function to return appropriate error messages based on the input field ID.
 
-- InputField: The main input field component.
+- `InputField`: The primary input field component.
 
   
 
@@ -225,7 +226,7 @@ The PaymentForm component includes validation logic for various fields:
 
   
 
-•  **Card Number:** Validated using validator.isCreditCard.
+•  **Card Number:** Validated using validator.`isCreditCard`
 
 •  **Expiry Date:** Validated using a custom function to check the format MM/YY and ensure the date is in the future.
 
@@ -241,11 +242,11 @@ The PaymentForm component includes validation logic for various fields:
 
   
 
-- handleFieldChange: Handles changes to the input fields and performs validation.
+- `handleFieldChange`: Handles changes to the input fields and performs validation.
 
-- handleExpiryKeyDown: Handles key down events for the expiry date field to manage deletion.
+- `handleExpiryKeyDown`: Handles key-down events for the expiry date field to manage deletion.
 
-- handleSubmit: Handles form submission and performs final validation.
+- `handleSubmit`: Handles form submission and performs final validation.
 
   
 
@@ -285,8 +286,8 @@ Open [http://localhost:3000/cedar-payment-flow](http://localhost:3000/cedar-paym
 
   
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can edit the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
   
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to optimize and load Inter, a custom Google Font.
