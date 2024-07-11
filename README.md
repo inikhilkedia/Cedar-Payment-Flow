@@ -4,6 +4,7 @@
 
 Made with Next.js, Typescript, TailWind CSS & Validator API
 
+Test the app with these. [Test Credit Card Numbers](https://www.paypalobjects.com/en_GB/vhelp/paypalmanager_help/credit_card_numbers.htm)
 
 Screenshot Legend:
 
