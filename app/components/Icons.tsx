@@ -7,10 +7,10 @@ type IconsProps = {
 };
 
 const cardIcons: Record<string, string> = {
-  visa: "/cedar-payment-flow/visa.svg",
-  mastercard: "/cedar-payment-flow/mastercard.svg",
-  amex: "/cedar-payment-flow/amex.svg",
-  discover: "/cedar-payment-flow/discover.svg",
+  visa: "/payment-flow/visa.svg",
+  mastercard: "/payment-flow/mastercard.svg",
+  amex: "/payment-flow/amex.svg",
+  discover: "/payment-flow/discover.svg",
 };
 
 const iconComponents: Record<string, JSX.Element> = {

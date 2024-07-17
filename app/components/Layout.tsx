@@ -46,7 +46,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
       <header className="flex items-center min-h-20 bg-white p-4 shadow-md">
         <div className="flex items-center">
           <Image
-            src="/cedar-payment-flow/abclogo.svg"
+            src="/payment-flow/abclogo.svg"
             alt="ABC Health System"
             width={100}
             height={100}
