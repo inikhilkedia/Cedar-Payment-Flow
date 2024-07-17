@@ -1,6 +1,7 @@
 
 # Cedar Payment Flow Take Home Assignment
 
+![Screenshot from the PayInfo Page](screenshots/PayInfo-lg.png)
 
 Made with Next.js, Typescript, TailWind CSS & Validator API
 
