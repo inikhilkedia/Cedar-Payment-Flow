@@ -1,5 +1,5 @@
 {
-  "name": "cedar-payment-flow",
+  "name": "payment-flow",
   "version": "0.1.0",
   "private": false,
   "scripts": {
