@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: "/cedar-payment-flow",
+  basePath: "/payment-flow",
   output: "export",
   reactStrictMode: true,
 };
