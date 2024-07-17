@@ -1,5 +1,5 @@
 
-# Cedar Payment Flow Take Home Assignment
+# Simple Payment Flow
 
 ![Screenshot from the PayInfo Page](screenshots/PayInfo-lg.png)
 
