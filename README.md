@@ -31,7 +31,6 @@ Test the app with these [Test Credit Card Numbers](https://www.paypalobjects.com
       - [Validation Logic:](#validation-logic)
   - [Getting Started](#getting-started)
     - [Running the Development Server:](#running-the-development-server)
-    - [Updated to Use Next.js Routing:](#updated-to-use-nextjs-routing)
 
 ---
 
