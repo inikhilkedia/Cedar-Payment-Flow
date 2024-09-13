@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AppProvider from "./AppProvider";
+import Layout from "./components/Layout"; // Import your Layout component
 
 // Import the Inter font from Google Fonts with the Latin subset
 const inter = Inter({ subsets: ["latin"] });
@@ -10,8 +11,8 @@ const inter = Inter({ subsets: ["latin"] });
  * Metadata for the app
  */
 export const metadata: Metadata = {
-  title: "ABC Health System",
-  description: "Payment portal for ABC Health System powered by Cedar",
+	title: "ABC Health System",
+	description: "Payment portal for ABC Health System powered by Cedar",
 };
 
 /**
@@ -23,15 +24,17 @@ export const metadata: Metadata = {
  * @returns {JSX.Element} The root layout component
  */
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }): JSX.Element {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <AppProvider>{children}</AppProvider>
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body className={inter.className}>
+				<AppProvider>
+					<Layout>{children}</Layout>
+				</AppProvider>
+			</body>
+		</html>
+	);
 }

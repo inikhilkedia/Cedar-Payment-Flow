@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode, useContext } from "react";
 import Image from "next/image";
 import AppContext, { AppContextType } from "../AppContext";
