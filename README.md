@@ -165,16 +165,10 @@ pnpm next
 bun next
 ```
 
-Open [http://localhost:3000/cedar-payment-flow](http://localhost:3000/cedar-payment-flow) in your browser to see the result.
+Open [http://localhost:3000/cedar-payment-flow](http://localhost:3000/payment-flow) in your browser to see the result.
 
 You can edit any page or component by modifying the corresponding files in the `/app` folder. The app will auto-update as you make changes.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to optimize and load the Inter font, a custom Google Font.
-
----
-
-### Updated to Use Next.js Routing:
-- The payment flow now uses **Next.js routing** to manage transitions between pages, simplifying the logic by removing conditional rendering.
-- The global state, such as payment details and editing status, is still managed via **AppContext**, but the transition between stages (e.g., Welcome to PayAndReview) is now handled through the Next.js routing system.
 
 ---
