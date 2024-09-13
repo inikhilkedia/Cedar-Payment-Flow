@@ -1,4 +1,4 @@
-import React, { FC, FormEvent, ChangeEvent, useContext } from "react";
+import React, { FC, FormEvent, ChangeEvent, useContext, useRef } from "react";
 import validator from "validator";
 import InputField from "./InputField";
 import AppContext, { AppContextType } from "../AppContext";
@@ -42,6 +42,13 @@ const PaymentForm: FC<PaymentFormProps> = ({ classes }) => {
 		setError,
 	} = context;
 
+	// Create refs for each input field
+	const cardNumberRef = useRef<HTMLInputElement>(null);
+	const expiryRef = useRef<HTMLInputElement>(null);
+	const cvvRef = useRef<HTMLInputElement>(null);
+	const nameRef = useRef<HTMLInputElement>(null);
+	const zipRef = useRef<HTMLInputElement>(null);
+
 	/**
 	 * Validators for each field in the form to ensure valid input data is entered by the user before submission of the form data to the server. The validators object is a record with the field name as the key and a function that takes a string value and returns a boolean value as the value. The function uses the validator library to validate the input data. The cardNumber field is validated using the isCreditCard method, the expiry field is validated using a custom function that checks if the input data is in the format MM/YY and if the expiry date is in the future, the cvv field is validated using a custom function that checks if the input data is a numeric value with a length of 3 or 4, the name field is validated using a custom function that checks if the input data is an alphabetic value with no spaces, and the zip field is validated using the isPostalCode method with the country code "US". The handleFieldChange function is used to update the state of the form fields and check if the input data is valid using the validators object. The handleExpiryKeyDown function is used to handle the keydown event for the expiry field and remove the "/" character when the user presses the backspace or delete key. The handleSubmit function is used to validate all the form fields and set the error state if any of the fields are invalid. If all the fields are valid, the error state is set to an empty object and the editing state is set to false to indicate that the form data is ready for submission to the server. The form component renders the input fields for the card number, expiry date, cvv, name, and zip code, and a submit button to continue to the next step in the payment process. The input fields are wrapped in a form element with the onSubmit event handler set to the handleSubmit function and the additional CSS classes passed as props to the component. The input fields are rendered using the InputField component with the appropriate props for the label, value, onChange, error, ariaLabel, and validationFunc. The submit button is rendered with the text "Continue" and a click event handler to submit the form data. The PaymentForm component returns the form element with the input fields and submit button. The PaymentForm component is used in the Payment component to render the payment form for the user to enter their payment information.
 	 */
@@ -79,7 +86,11 @@ const PaymentForm: FC<PaymentFormProps> = ({ classes }) => {
 	 * @param type The type of the input field.
 	 * @param value The value of the input field.
 	 */
-	const handleFieldChange = (type: keyof PaymentError, value: string): void => {
+	const handleFieldChange = (
+		type: keyof PaymentError,
+		value: string,
+		nextFieldRef?: React.RefObject<HTMLInputElement>
+	): void => {
 		let formattedValue = value;
 
 		if (type === "expiry" && value.length === 2) {
@@ -101,6 +112,11 @@ const PaymentForm: FC<PaymentFormProps> = ({ classes }) => {
 
 		const newError = !validators[type](formattedValue);
 		setError((prevError) => ({ ...prevError, [type]: newError }));
+
+		// Move focus to the next field if validation passes
+		if (!newError && nextFieldRef?.current) {
+			nextFieldRef.current.focus();
+		}
 	};
 
 	/**
@@ -154,11 +170,12 @@ const PaymentForm: FC<PaymentFormProps> = ({ classes }) => {
 				label="Card number"
 				value={cardNumber ?? ""}
 				onChange={(e: ChangeEvent<HTMLInputElement>) =>
-					handleFieldChange("cardNumber", e.target.value)
+					handleFieldChange("cardNumber", e.target.value, expiryRef)
 				}
 				error={errorContext.cardNumber ?? false}
 				ariaLabel="Card number"
 				validationFunc={validators.cardNumber}
+				ref={cardNumberRef}
 			/>
 			<div className="flex space-x-4">
 				<InputField
@@ -167,12 +184,13 @@ const PaymentForm: FC<PaymentFormProps> = ({ classes }) => {
 					label="Expires (MM/YY)"
 					value={expiry ?? ""}
 					onChange={(e: ChangeEvent<HTMLInputElement>) =>
-						handleFieldChange("expiry", e.target.value)
+						handleFieldChange("expiry", e.target.value, cvvRef)
 					}
 					onKeyDown={handleExpiryKeyDown}
 					error={errorContext.expiry ?? false}
 					ariaLabel="Expiration date"
 					validationFunc={validators.expiry}
+					ref={expiryRef}
 				/>
 				<InputField
 					id="cvv"
@@ -180,11 +198,12 @@ const PaymentForm: FC<PaymentFormProps> = ({ classes }) => {
 					label="Security code (CVV)"
 					value={cvv ?? ""}
 					onChange={(e: ChangeEvent<HTMLInputElement>) =>
-						handleFieldChange("cvv", e.target.value)
+						handleFieldChange("cvv", e.target.value, nameRef)
 					}
 					error={errorContext.cvv ?? false}
 					ariaLabel="CVV"
 					validationFunc={validators.cvv}
+					ref={cvvRef}
 				/>
 			</div>
 			<InputField
@@ -192,11 +211,12 @@ const PaymentForm: FC<PaymentFormProps> = ({ classes }) => {
 				label="Name on card"
 				value={name ?? ""}
 				onChange={(e: ChangeEvent<HTMLInputElement>) =>
-					handleFieldChange("name", e.target.value)
+					handleFieldChange("name", e.target.value, zipRef)
 				}
 				error={errorContext.name ?? false}
 				ariaLabel="Name on card"
 				validationFunc={validators.name}
+				ref={nameRef}
 			/>
 			<InputField
 				id="zip"
@@ -208,6 +228,7 @@ const PaymentForm: FC<PaymentFormProps> = ({ classes }) => {
 				error={errorContext.zip ?? false}
 				ariaLabel="Zip code"
 				validationFunc={validators.zip}
+				ref={zipRef}
 			/>
 			<button
 				type="submit"
