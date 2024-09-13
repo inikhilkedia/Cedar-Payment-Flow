@@ -50,7 +50,28 @@ const PaymentForm: FC<PaymentFormProps> = ({ classes }) => {
 	const zipRef = useRef<HTMLInputElement>(null);
 
 	/**
-	 * Validators for each field in the form to ensure valid input data is entered by the user before submission of the form data to the server. The validators object is a record with the field name as the key and a function that takes a string value and returns a boolean value as the value. The function uses the validator library to validate the input data. The cardNumber field is validated using the isCreditCard method, the expiry field is validated using a custom function that checks if the input data is in the format MM/YY and if the expiry date is in the future, the cvv field is validated using a custom function that checks if the input data is a numeric value with a length of 3 or 4, the name field is validated using a custom function that checks if the input data is an alphabetic value with no spaces, and the zip field is validated using the isPostalCode method with the country code "US". The handleFieldChange function is used to update the state of the form fields and check if the input data is valid using the validators object. The handleExpiryKeyDown function is used to handle the keydown event for the expiry field and remove the "/" character when the user presses the backspace or delete key. The handleSubmit function is used to validate all the form fields and set the error state if any of the fields are invalid. If all the fields are valid, the error state is set to an empty object and the editing state is set to false to indicate that the form data is ready for submission to the server. The form component renders the input fields for the card number, expiry date, cvv, name, and zip code, and a submit button to continue to the next step in the payment process. The input fields are wrapped in a form element with the onSubmit event handler set to the handleSubmit function and the additional CSS classes passed as props to the component. The input fields are rendered using the InputField component with the appropriate props for the label, value, onChange, error, ariaLabel, and validationFunc. The submit button is rendered with the text "Continue" and a click event handler to submit the form data. The PaymentForm component returns the form element with the input fields and submit button. The PaymentForm component is used in the Payment component to render the payment form for the user to enter their payment information.
+	 * Validators for the PaymentForm component.
+	 * The cardNumber function uses the isCreditCard method from the validator package to validate the card number.
+	 * The expiry function validates the expiry date by checking if the month is between 1 and 12 and the year is greater than the current year.
+	 * The cvv function validates the CVV by checking if it is 3 or 4 digits long and contains only numbers.
+	 * The name function validates the name by checking if it contains only alphabetic characters.
+	 * The zip function validates the zip code by checking if it is a valid US postal code.
+	 *
+	 * @typedef {Object} PaymentError - The error object for payment form validation.
+	 * @property {string} cardNumber - The card number validation error.
+	 * @property {string} expiry - The expiry date validation error.
+	 * @property {string} cvv - The CVV validation error.
+	 * @property {string} name - The name validation error.
+	 * @property {string} zip - The ZIP code validation error.
+	 *
+	 * @typedef {Object} Validators - The validators object for payment form fields.
+	 * @property {(value: string) => boolean} cardNumber - The validator for card number field.
+	 * @property {(value: string) => boolean} expiry - The validator for expiry date field.
+	 * @property {(value: string) => boolean} cvv - The validator for CVV field.
+	 * @property {(value: string) => boolean} name - The validator for name field.
+	 * @property {(value: string) => boolean} zip - The validator for ZIP code field.
+	 *
+	 * @type {Validators} validators - The validators object for payment form fields.
 	 */
 	const validators: Record<keyof PaymentError, (value: string) => boolean> = {
 		cardNumber: validator.isCreditCard,
@@ -73,9 +94,16 @@ const PaymentForm: FC<PaymentFormProps> = ({ classes }) => {
 			}
 			return false;
 		},
-		cvv: (value) =>
-			validator.isLength(value, { min: 3, max: 4 }) &&
-			validator.isNumeric(value),
+		cvv: (value) => {
+			const isAmex = cardNumber
+				? validator.isCreditCard(cardNumber, { provider: "amex" })
+				: false;
+			return isAmex
+				? validator.isLength(value, { min: 4, max: 4 }) &&
+						validator.isNumeric(value)
+				: validator.isLength(value, { min: 3, max: 3 }) &&
+						validator.isNumeric(value);
+		},
 		name: (value) => validator.isAlpha(value.replace(/ /g, "")),
 		zip: (value) => validator.isPostalCode(value, "US"),
 	};
